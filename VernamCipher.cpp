@@ -6,15 +6,27 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	string plaintext, key, ciphertext, alphabet;
-    char buf[1];
-    cout<<"Plain Text:\t";
-    cin>>plaintext;
-    cout<<"Key:\t";
-    cin>>key;
+
+    if (argc==2) {
+    	plaintext = argv[1];
+    	cout<<"Key:\t";
+    	cin>>key;
+
+    } else if (argc == 3) {
+    	plaintext = argv[1];
+    	key = argv[2];
+    } else {
+    	cout<<"Plain Text:\t";
+    	cin>>plaintext;
+    	cout<<"Key:\t";
+    	cin>>key;
+    }
+
     transform(plaintext.begin(), plaintext.end(), plaintext.begin(), ::tolower);
     transform(key.begin(), key.end(), key.begin(), ::tolower);
     int ptlen = plaintext.length();
     int klen  = key.length();
+    
     for(int i = 97; i < 123; ++i)
     {
         alphabet.insert(alphabet.end(), (char)i);
@@ -27,7 +39,7 @@ int main(int argc, char const *argv[])
     {
     	ciphertext.insert(ciphertext.end(), alphabet[(alphabet.find(plaintext[i]) ^ alphabet.find(plaintext[i-klen]))%26]);
     }
-    cout<<ciphertext;
+    cout<<"Cipher Text:\t"<<ciphertext<<endl;
 
 	return 0;
 }
