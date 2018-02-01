@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
     int klen = to_string(key).length();
     if (klen > ptlen)
     {
-    	unexpected();
+    	unexpected("\n--Key length is greater than PlainText length--\n");
     }
     
     for (int i = klen; i > 0; i--)

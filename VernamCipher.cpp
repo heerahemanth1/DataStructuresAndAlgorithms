@@ -26,16 +26,20 @@ int main(int argc, char const *argv[])
     transform(key.begin(), key.end(), key.begin(), ::tolower);
     int ptlen = plaintext.length();
     int klen  = key.length();
+    if (klen > ptlen)
+    {
+    	unexpected("\n--Key length is greater than PlainText length--\n");
+    }
     
-    for(int i = 97; i < 123; ++i)
+    for(int i = 97; i < 123; i++)
     {
         alphabet.insert(alphabet.end(), (char)i);
     }
-    for(int i = 0; i < klen; ++i)
+    for(int i = 0; i < klen; i++)
     {
     	ciphertext.insert(ciphertext.end(), alphabet[(alphabet.find(plaintext[i]) ^ alphabet.find(key[i]))%26]);
     }
-    for (int i = klen; i < ptlen; ++i)
+    for (int i = klen; i < ptlen; i++)
     {
     	ciphertext.insert(ciphertext.end(), alphabet[(alphabet.find(plaintext[i]) ^ alphabet.find(plaintext[i-klen]))%26]);
     }
