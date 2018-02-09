@@ -5,8 +5,15 @@
 #include <stdexcept>
 using namespace std;
 
+void unexp_handler()
+{
+	cout<<"\n-----Key length should not be greater than the Plain tect----\n";
+	abort();
+}
+
 int main(int argc, char const *argv[])
 {
+	set_unexpected(unexp_handler);
 	string plaintext, ciphertext;
 	int key;
 
@@ -29,7 +36,7 @@ int main(int argc, char const *argv[])
     int klen = to_string(key).length();
     if (klen > ptlen)
     {
-    	unexpected("\n--Key length is greater than PlainText length--\n");
+    	unexpected();
     }
     
     for (int i = klen; i > 0; i--)
