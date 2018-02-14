@@ -28,6 +28,15 @@ int main(int argc, char const *argv[])
 		cout<<"Key:\t";
 		cin>>key;
     }
+    string s;
+    for (int i = 0; i < key.length(); ++i)
+    {
+    	if (s.find(key[i]) == string::npos)
+    	{
+    		s.insert(s.end(), key[i]);
+    	}
+    }
+    key = s;
     int ptlen = plaintext.length(), klen = key.length();
     if(klen > ptlen) {
 		unexpected();
@@ -91,6 +100,6 @@ int main(int argc, char const *argv[])
 		k += 2;
     }
 
-    cout<<"Cipher Text:\t"<<ciphertext<<endl;
+    cout<<"\nCipher Text:\t"<<ciphertext<<endl<<endl;
     return 0;
 }
