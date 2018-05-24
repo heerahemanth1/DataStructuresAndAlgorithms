@@ -17,9 +17,9 @@ using namespace std;
 
 long gcd(long a, long b) {
   while(1) {
-    int temp = (a%b);
+    long temp = (a%b);
     if(temp == 0)
-			return b;
+	return b;
     a = b;
     b = temp;
   }
@@ -83,7 +83,7 @@ int main(int argc, const char *argv[]) {
     e = calculate_E(st, phi);
     d = calculate_D(e, phi);
     st++;
-  } while(d == 1 && st < phi);
+  } while((d == 1 && st < phi) || fmod(d, phi) != 1);
   cout<<e<<"\t"<<d<<endl;
   
   string pt, ct;

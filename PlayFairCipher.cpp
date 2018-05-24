@@ -6,7 +6,7 @@ using namespace std;
 
 void unexp_handler()
 {
-	cout<<"\n-----Key length should not be greater than the Plain tect----\n";
+	cout<<"\n-----Key length should not be greater than the Plain text----\n";
 	abort();
 }
 
